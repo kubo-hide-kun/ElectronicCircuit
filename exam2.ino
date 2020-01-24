@@ -16,7 +16,7 @@ void loop() {
   int pw1 = analogRead(A0);
   if( roop++ % 500 == 0)Serial.println(pw1);
   // false: 前進, true: 後退
-  ctrl(pw1 < 300, pw1 < 300);
+  ctrl(pw1 < 330, pw1 < 330);
 }
 
 void ctrl(bool right, bool left) {
