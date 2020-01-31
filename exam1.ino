@@ -1,41 +1,51 @@
+int roop = 0;
+int i;
+
 void setup() {
   // put your setup code here, to run once:
+   pinMode(A0,INPUT);
+  pinMode(A1,INPUT);
+  /*pinMode(3,OUTPUT);
+  pinMode(5,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(11,OUTPUT);*/
   pinMode(8,OUTPUT);
-  pinMode(9,OUTPUT);
-  pinMode(12,OUTPUT);
-  pinMode(13,OUTPUT);
+  Serial.begin(9600);
 }
 
 void loop() {
-  
-  // false: 前進, true: 後退
-  ctrl(false,false);
-  delay(5000);
-  ctrl(true,true);
-  delay(5000);
-  ctrl(true,false);
-  delay(5000);
-  ctrl(false,true);
-  delay(5000);
-  
-}
-
-void ctrl(bool right, bool left) {
-  
-  if(right) {
-    digitalWrite(8,HIGH);
-    digitalWrite(9,LOW);
-  } else {
-    digitalWrite(9,HIGH);
-    digitalWrite(8,LOW);;
-  }
-  
-  if(left) {
-    digitalWrite(12,HIGH);
-    digitalWrite(13,LOW);
-  } else {
-    digitalWrite(13,HIGH);
-    digitalWrite(12,LOW);;
-  }
-  
+  digitalWrite(8,HIGH);
+    //前進
+    analogWrite(5,255);
+    analogWrite(3,0);
+    analogWrite(10,255);
+    analogWrite(11,0);
+    delay(3000);
+    //後進
+    analogWrite(5,0);
+    analogWrite(3,255);
+    analogWrite(10,0);
+    analogWrite(11,255);
+    delay(3000);
+    //右回転
+    analogWrite(5,255);
+    analogWrite(3,0);
+    analogWrite(10,0);
+    analogWrite(11,0);
+    delay(3000);
+    //左回転
+    analogWrite(5,0);
+    analogWrite(3,0);
+    analogWrite(10,255);
+    analogWrite(11,0);
+    delay(3000);
+    roop++;
+    if(roop==2){
+       for(;;){
+        analogWrite(5,0);
+        analogWrite(3,0);
+        analogWrite(10,0);
+        analogWrite(11,0);
+        }
+      }
 }
